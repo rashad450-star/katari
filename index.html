@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katari - Success for African Traders</title>
+    <meta name="description" content="Katari is a P2P crypto trading platform for Africa, built with blockchain escrow and Mobile Money integration.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -70px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        /* African pattern background */
+        .african-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background: 
+                linear-gradient(rgba(5, 150, 105, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(5, 150, 105, 0.1) 1px, transparent 1px),
+                radial-gradient(circle, rgba(245, 158, 11, 0.15) 3px, transparent 3px),
+                radial-gradient(circle, rgba(234, 88, 12, 0.15) 3px, transparent 3px);
+            background-size: 40px 40px, 40px 40px, 40px 40px, 40px 40px;
+            background-position: 0 0, 0 0, 10px 10px, 30px 30px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 min-h-screen font-sans">
+    <!-- Background Pattern -->
+    <div class="african-pattern"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-green-600">KATARI</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="scrollToSection('hero')" class="font-medium text-green-600">Home</button>
+                    <button onclick="scrollToSection('story')" class="font-medium text-gray-700 hover:text-green-600">Our Story</button>
+                    <button onclick="scrollToSection('problem')" class="font-medium text-gray-700 hover:text-green-600">The Problem</button>
+                    <button onclick="scrollToSection('solution')" class="font-medium text-gray-700 hover:text-green-600">How It Works</button>
+                    <button onclick="scrollToSection('features')" class="font-medium text-gray-700 hover:text-green-600">Features</button>
+                    <button onclick="scrollToSection('audience')" class="font-medium text-gray-700 hover:text-green-600">Who It's For</button>
+                    <button onclick="scrollToSection('roadmap')" class="font-medium text-gray-700 hover:text-green-600">Roadmap</button>
+                    <button onclick="scrollToSection('faq')" class="font-medium text-gray-700 hover:text-green-600">FAQ</button>
+                    <button onclick="scrollToSection('waitlist')" class="font-medium text-gray-700 hover:text-green-600">Join Waitlist</button>
+                </div>
+                
+                <button class="md:hidden p-2 rounded-md text-gray-700" onclick="toggleMobileMenu()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white transition-colors duration-300">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <button onclick="scrollToSection('hero')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">Home</button>
+                <button onclick="scrollToSection('story')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">Our Story</button>
+                <button onclick="scrollToSection('problem')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">The Problem</button>
+                <button onclick="scrollToSection('solution')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">How It Works</button>
+                <button onclick="scrollToSection('features')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">Features</button>
+                <button onclick="scrollToSection('audience')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">Who It's For</button>
+                <button onclick="scrollToSection('roadmap')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">Roadmap</button>
+                <button onclick="scrollToSection('faq')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">FAQ</button>
+                <button onclick="scrollToSection('waitlist')" class="block w-full text-left px-4 py-2 rounded-md text-gray-700 hover:bg-gray-100">Join Waitlist</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-20 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                            <span class="text-green-600">Success</span> for African Traders
+                        </h1>
+                        <p class="text-xl text-gray-700">
+                            Trade crypto safely with anyone, anywhere. Built for Africa, powered by blockchain escrow, accessible through Mobile Money.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('waitlist')" class="px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-green-600 hover:bg-green-700 text-white focus:ring-green-500">
+                            Join Waitlist
+                        </button>
+                        <button onclick="scrollToSection('solution')" class="px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 border-2 border-green-600 text-green-600 hover:bg-green-50 focus:ring-green-500">
+                            Learn More ↓
+                        </button>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-green-50 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="mr-2">✨</span>
+                            <span class="font-medium">"Katari" - Dagbani word for success and blessing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://placehold.co/600x400/059669/FFFFFF?text=African+Trader+on+Phone" alt="African person using phone for crypto trading" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute -top-10 -right-10 w-64 h-64 bg-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 -right-10 w-64 h-64 bg-orange-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 mb-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full">
+                    <span class="text-white">❤️</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Why Katari?</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Katari means 'success' and 'blessing' in Dagbani, a language spoken in Northern Ghana.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-green-50 to-yellow-50 p-8 rounded-xl mb-8">
+                    <p class="text-lg leading-relaxed mb-6">
+                        Just as our ancestors blessed each other's trades in the marketplace, Katari brings that blessing to digital trade - ensuring every transaction is successful and every trader is protected.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        We're not just another crypto platform. We're building African success, one trade at a time.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-8 mt-12">
+                    <div class="md:w-1/3">
+                        <div class="rounded-xl overflow-hidden">
+                            <img src="https://placehold.co/300x300/EA580C/FFFFFF?text=Founder" alt="Mohammed Rashad, Founder & CEO" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="bg-white p-6 rounded-xl">
+                            <h3 class="text-2xl font-bold mb-4">Mohammed Rashad</h3>
+                            <p class="text-sm text-gray-500 mb-4">Founder & CEO</p>
+                            <blockquote class="italic text-lg mb-6">
+                                "I'm a crypto trader from Tamale, Ghana. I've experienced the fear of meeting strangers with cash, the pain of losing money to scams, and the frustration of 15% fees.
+                            </blockquote>
+                            <blockquote class="italic text-lg mb-6">
+                                I named this platform Katari - 'success' in my native Dagbani language - because every African deserves the blessing of safe, affordable crypto trading.
+                            </blockquote>
+                            <blockquote class="italic text-lg">
+                                This isn't just business. This is bringing success to my people."
+                            </blockquote>
+                        </div>
+                        <div class="mt-6 flex space-x-4">
+                            <a href="https://linkedin.com/in/katari45" class="text-blue-600 hover:underline">LinkedIn</a>
+                            <a href="https://twitter.com/KatariApp" class="text-blue-600 hover:underline">@KatariApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem Section -->
+    <section id="problem" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 mb-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full">
+                    <span class="text-white">⚠️</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">The Problem We're Solving</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="flex justify-center mb-4">
+                        <span class="text-red-600 text-4xl">⚠️</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Unsafe Trades</h3>
+                    <p class="text-gray-600">Meeting strangers with cash is dangerous. Scams are common. No protection.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="flex justify-center mb-4">
+                        <span class="text-yellow-600 text-4xl">💸</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">High Fees</h3>
+                    <p class="text-gray-600">Traditional exchanges charge 8-15% fees. Hidden costs. Poor rates for Mobile Money.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="flex justify-center mb-4">
+                        <span class="text-blue-600 text-4xl">📱</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Limited Access</h3>
+                    <p class="text-gray-600">Most platforms don't support MTN Mobile Money, Vodafone Cash, or local African payment methods.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-xl font-semibold text-gray-800">African traders deserve better.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="solution" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 mb-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full">
+                    <span class="text-white">🔒</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">How Katari Works</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 mt-12">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">1</div>
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <span class="text-green-600 text-4xl">🔍</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Find Your Match</h3>
+                    <p class="text-gray-600">Browse verified traders. Compare rates. Choose the best price in your area.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">2</div>
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <span class="text-green-600 text-4xl">🔒</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Protected by Escrow</h3>
+                    <p class="text-gray-600">Crypto locks in smart contract. Only releases when both parties confirm. Your blessing is protected.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">3</div>
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <span class="text-green-600 text-4xl">💰</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Pay Your Way</h3>
+                    <p class="text-gray-600">MTN Mobile Money, Vodafone Cash, bank transfer, or cash meetup. You choose.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">4</div>
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <span class="text-green-600 text-4xl">✅</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Trade Complete</h3>
+                    <p class="text-gray-600">Receive crypto automatically. Rate your partner. Every successful trade is a blessing shared.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 mb-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full">
+                    <span class="text-white">🛡️</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Why Choose Katari</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">🔐</span>
+                        <h3 class="text-xl font-bold">Smart Contract Escrow</h3>
+                    </div>
+                    <p class="text-gray-600">Audited blockchain contracts protect every trade. Your success is guaranteed by code, not trust.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">✅</span>
+                        <h3 class="text-xl font-bold">Verified Community</h3>
+                    </div>
+                    <p class="text-gray-600">Reputation scores, trade history, user ratings. Trade with confidence, build lasting relationships.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">📱</span>
+                        <h3 class="text-xl font-bold">Mobile Money First</h3>
+                    </div>
+                    <p class="text-gray-600">Built for MTN, Vodafone, AirtelTigo from day one. Trade the way you already transact.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">💵</span>
+                        <h3 class="text-xl font-bold">Fair Rates</h3>
+                    </div>
+                    <p class="text-gray-600">Real-time price comparison across all traders. Save 5-15% compared to traditional exchanges.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">🌍</span>
+                        <h3 class="text-xl font-bold">Pan-African Network</h3>
+                    </div>
+                    <p class="text-gray-600">Ghana, Nigeria, Kenya, and beyond. Connect with traders across borders.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">⚡</span>
+                        <h3 class="text-xl font-bold">Fast & Simple</h3>
+                    </div>
+                    <p class="text-gray-600">Most trades complete in under 30 minutes. Success shouldn't be complicated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For Section -->
+    <section id="audience" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 mb-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full">
+                    <span class="text-white">🎯</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Built for African Success</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">🎓</span>
+                        <h3 class="text-xl font-bold">Students & Freelancers</h3>
+                    </div>
+                    <p class="text-gray-600">Receive international payments. Convert to cedis, naira, shillings instantly.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">📊</span>
+                        <h3 class="text-xl font-bold">P2P Traders</h3>
+                    </div>
+                    <p class="text-gray-600">Safe environment for arbitrage. Build reputation, grow your trading business.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">💸</span>
+                        <h3 class="text-xl font-bold">Remittance Senders</h3>
+                    </div>
+                    <p class="text-gray-600">Send money home at a fraction of the cost. Your family receives more, you pay less.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="text-green-600 text-2xl mr-2">💼</span>
+                        <h3 class="text-xl font-bold">Small Businesses</h3>
+                    </div>
+                    <p class="text-gray-600">Accept crypto payments from global customers. Cash out to Mobile Money seamlessly.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-xl font-semibold text-gray-800">Every trade is a step toward success.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 mb-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full">
+                    <span class="text-white">🚀</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">The Path to Success</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8 p-6 rounded-xl bg-white shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center text-white font-bold">Q1 2026</div>
+                        <h3 class="text-xl font-bold ml-4">Beta Launch (Ghana)</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Smart contract deployment</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>100 beta users</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>MTN Mobile Money integration</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Building the foundation for success</span></li>
+                    </ul>
+                </div>
+                <div class="mb-8 p-6 rounded-xl bg-white shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center text-white font-bold">Q2 2026</div>
+                        <h3 class="text-xl font-bold ml-4">Public Launch</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Open to all Ghanaians</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Mobile app (iOS & Android)</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Expand payment methods</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Success becomes accessible</span></li>
+                    </ul>
+                </div>
+                <div class="mb-8 p-6 rounded-xl bg-white shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center text-white font-bold">Q3 2026</div>
+                        <h3 class="text-xl font-bold ml-4">Regional Growth</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Launch in Nigeria</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>10,000+ users</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Advanced reputation system</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Blessing spreads across West Africa</span></li>
+                    </ul>
+                </div>
+                <div class="mb-8 p-6 rounded-xl bg-white shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center text-white font-bold">Q4 2026</div>
+                        <h3 class="text-xl font-bold ml-4">Pan-African Scale</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Kenya, Uganda, Tanzania</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>API for businesses</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>Multi-language support</span></li>
+                        <li class="flex items-start"><div class="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3"></div><span>African success, everywhere</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 mb-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full">
+                    <span class="text-white">❓</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Common Questions</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="p-6 rounded-xl bg-gray-50">
+                    <h3 class="text-xl font-bold mb-3">What does Katari mean?</h3>
+                    <p class="text-gray-600">Katari means 'success' and 'blessing' in Dagbani, a language spoken in Northern Ghana. It represents our mission to bring success to every African trader.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gray-50">
+                    <h3 class="text-xl font-bold mb-3">How does escrow keep me safe?</h3>
+                    <p class="text-gray-600">Crypto locks in a smart contract controlled by code, not people. Funds only release when both parties confirm, or through dispute resolution. Scams are impossible.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gray-50">
+                    <h3 class="text-xl font-bold mb-3">Which payment methods work?</h3>
+                    <p class="text-gray-600">Launching with MTN Mobile Money, Vodafone Cash, and AirtelTigo Money. Bank transfers and additional methods coming soon based on community needs.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gray-50">
+                    <h3 class="text-xl font-bold mb-3">What are your fees?</h3>
+                    <p class="text-gray-600">Small transaction fee (1-2%) to sustain operations. Much lower than traditional exchanges. Early users get discounted rates.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gray-50">
+                    <h3 class="text-xl font-bold mb-3">When can I start trading?</h3>
+                    <p class="text-gray-600">Beta launches Q1 2025 in Ghana. Join the waitlist for early access and exclusive benefits.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gray-50">
+                    <h3 class="text-xl font-bold mb-3">Is this available in my country?</h3>
+                    <p class="text-gray-600">Starting in Ghana, expanding to Nigeria, Kenya, and across Africa. Join waitlist to be notified when Katari reaches your country.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="py-16 md:py-24 bg-gradient-to-r from-green-600 to-green-500 text-white">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 mb-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full">
+                    <span class="text-white">⭐</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Join the Movement to Success</h2>
+                <p class="text-xl text-white max-w-2xl mx-auto">Be among the first to experience safe, blessed crypto trading. Beta launching Q1 2025 in Ghana.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <form id="waitlistForm" class="bg-white text-gray-900 rounded-xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" placeholder="your@email.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Country</label>
+                            <select id="country" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                <option value="Ghana">Ghana</option>
+                                <option value="Nigeria">Nigeria</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="ambassador" class="mr-2">
+                            <span class="text-gray-700">I want to be a campus ambassador</span>
+                        </label>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <button type="submit" class="px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-green-600 hover:bg-green-700 text-white focus:ring-green-500 w-full md:w-auto">
+                            Join Katari
+                        </button>
+                    </div>
+                    
+                    <div id="successMessage" class="mt-4 p-4 bg-green-100 text-green-800 rounded-lg hidden">
+                        Thank you for joining! You'll receive an email with next steps.
+                    </div>
+                </form>
+                
+                <div class="mt-8 p-6 bg-white/10 rounded-xl">
+                    <h4 class="text-xl font-bold mb-4">Early members receive:</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><span class="mr-2">✓</span> Zero fees for first month</li>
+                        <li class="flex items-center"><span class="mr-2">✓</span> Priority support</li>
+                        <li class="flex items-center"><span class="mr-2">✓</span> Exclusive beta features</li>
+                        <li class="flex items-center"><span class="mr-2">✓</span> Founding member badge</li>
+                    </ul>
+                    <p class="mt-4 text-sm">Limited to first 1,000 users.</p>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <p class="text-xl font-semibold">Together, we build African success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-green-400">KATARI</span>
+                    </div>
+                    <p class="mt-4 text-gray-300">Success for African Traders</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><button onclick="scrollToSection('hero')" class="text-gray-300 hover:text-white">Home</button></li>
+                        <li><button onclick="scrollToSection('story')" class="text-gray-300 hover:text-white">Our Story</button></li>
+                        <li><button onclick="scrollToSection('problem')" class="text-gray-300 hover:text-white">The Problem</button></li>
+                        <li><button onclick="scrollToSection('solution')" class="text-gray-300 hover:text-white">How It Works</button></li>
+                        <li><button onclick="scrollToSection('features')" class="text-gray-300 hover:text-white">Features</button></li>
+                        <li><button onclick="scrollToSection('audience')" class="text-gray-300 hover:text-white">Who It's For</button></li>
+                        <li><button onclick="scrollToSection('roadmap')" class="text-gray-300 hover:text-white">Roadmap</button></li>
+                        <li><button onclick="scrollToSection('faq')" class="text-gray-300 hover:text-white">FAQ</button></li>
+                        <li><button onclick="scrollToSection('waitlist')" class="text-gray-300 hover:text-white">Join Waitlist</button></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">🐦</a>
+                        <a href="#" class="text-gray-300 hover:text-white">💬</a>
+                        <a href="#" class="text-gray-300 hover:text-white">🔗</a>
+                        <a href="#" class="text-gray-300 hover:text-white">📸</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <div class="space-y-2">
+                        <p class="text-gray-300">hello.katari45@gmail.com</p>
+                        <p class="text-gray-300">Telegram: @KatariOfficial</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-700">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-300 mb-4 md:mb-0">
+                        © 2025 Katari. Built in Ghana with pride. 🇬🇭
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-300 hover:text-white text-sm">Terms</a>
+                        <a href="#" class="text-gray-300 hover:text-white text-sm">Privacy</a>
+                        <a href="#" class="text-gray-300 hover:text-white text-sm">Risk Disclaimer</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center text-gray-400">
+                <p>"Every trade is a blessing. Every trader deserves success."</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button id="scrollTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="fixed bottom-6 right-6 p-4 rounded-full bg-green-600 text-white shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none">
+        <span>↗️</span>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // Scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                scrollTopBtn.classList.add('opacity-100');
+            } else {
+                scrollTopBtn.classList.remove('opacity-100');
+                scrollTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        // Form submission
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            if (email) {
+                document.getElementById('successMessage').classList.remove('hidden');
+                document.getElementById('email').value = '';
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.add('hidden');
+                }, 3000);
+            }
+        });
+
+        // Initialize Lucide icons (optional - we're using emojis instead for simplicity)
+        // lucide.createIcons();
+    </script>
+</body>
+</html>
+
