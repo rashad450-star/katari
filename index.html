@@ -9,14 +9,25 @@
     <style>
         :root {
             --primary: #059669;
+            --primary-dark: #047857;
             --secondary: #F59E0B;
+            --secondary-dark: #d97706;
             --accent: #EA580C;
+            --accent-dark: #c2410c;
             --light: #f8fafc;
             --dark: #0f172a;
             --gray: #64748b;
             --light-gray: #f1f5f9;
             --white: #ffffff;
             --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --light: #1e293b;
+            --dark: #f8fafc;
+            --gray: #94a3b8;
+            --light-gray: #334155;
+            --white: #0f172a;
         }
 
         * {
@@ -53,6 +64,10 @@
             transition: var(--transition);
         }
 
+        .dark-mode header {
+            background-color: rgba(15, 23, 42, 0.95);
+        }
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -82,6 +97,10 @@
             transition: transform 0.3s ease;
         }
 
+        .dark-mode .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
         .logo:hover .logo-icon {
             transform: rotate(360deg);
         }
@@ -90,6 +109,10 @@
             font-size: 24px;
             font-weight: 800;
             color: var(--primary);
+        }
+
+        .dark-mode .logo-text {
+            color: var(--secondary);
         }
 
         .nav-links {
@@ -105,8 +128,16 @@
             position: relative;
         }
 
+        .dark-mode .nav-link {
+            color: var(--light);
+        }
+
         .nav-link:hover {
             color: var(--primary);
+        }
+
+        .dark-mode .nav-link:hover {
+            color: var(--secondary);
         }
 
         .nav-link::after {
@@ -118,6 +149,10 @@
             height: 2px;
             background-color: var(--primary);
             transition: var(--transition);
+        }
+
+        .dark-mode .nav-link::after {
+            background-color: var(--secondary);
         }
 
         .nav-link:hover::after {
@@ -137,6 +172,10 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
+        .dark-mode .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -151,6 +190,10 @@
             color: var(--dark);
         }
 
+        .dark-mode .mobile-menu-btn {
+            color: var(--light);
+        }
+
         /* Mobile Menu */
         .mobile-menu {
             position: fixed;
@@ -163,6 +206,10 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
+        }
+
+        .dark-mode .mobile-menu {
+            background: var(--dark);
         }
 
         .mobile-menu.active {
@@ -188,9 +235,47 @@
             transition: var(--transition);
         }
 
+        .dark-mode .mobile-menu a {
+            color: var(--light);
+        }
+
         .mobile-menu a:hover {
             background: rgba(5, 150, 105, 0.1);
             color: var(--primary);
+        }
+
+        .dark-mode .mobile-menu a:hover {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--secondary);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: none;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .dark-mode .dark-mode-toggle {
+            color: var(--light);
+        }
+
+        .dark-mode-toggle i {
+            font-size: 20px;
+        }
+
+        .dark-mode-toggle:hover {
+            color: var(--primary);
+        }
+
+        .dark-mode .dark-mode-toggle:hover {
+            color: var(--secondary);
         }
 
         /* Section Styles */
@@ -206,12 +291,20 @@
             color: var(--dark);
         }
 
+        .dark-mode .section-title {
+            color: var(--light);
+        }
+
         .section-subtitle {
             font-size: 20px;
             text-align: center;
             max-width: 600px;
             margin: 0 auto 60px;
             color: var(--gray);
+        }
+
+        .dark-mode .section-subtitle {
+            color: var(--light-gray);
         }
 
         .section-icon {
@@ -232,6 +325,10 @@
             font-size: 28px;
         }
 
+        .dark-mode .icon-container {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
         /* Hero Section */
         .hero {
             padding-top: 160px;
@@ -239,6 +336,10 @@
             background: linear-gradient(135deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
             position: relative;
             overflow: hidden;
+        }
+
+        .dark-mode .hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.8) 100%);
         }
 
         .hero::before {
@@ -253,6 +354,10 @@
             opacity: 0.05;
         }
 
+        .dark-mode .hero::before {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
         .hero::after {
             content: '';
             position: absolute;
@@ -263,6 +368,10 @@
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent), var(--secondary));
             opacity: 0.05;
+        }
+
+        .dark-mode .hero::after {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
         }
 
         .hero-content {
@@ -283,6 +392,10 @@
             position: relative;
         }
 
+        .dark-mode .hero-image {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
         .hero-image img {
             width: 100%;
             height: auto;
@@ -297,6 +410,10 @@
             color: var(--dark);
         }
 
+        .dark-mode .hero-headline {
+            color: var(--light);
+        }
+
         .hero-headline span {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
@@ -304,10 +421,18 @@
             color: transparent;
         }
 
+        .dark-mode .hero-headline span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
         .hero-subheadline {
             font-size: 20px;
             margin-bottom: 32px;
             color: var(--gray);
+        }
+
+        .dark-mode .hero-subheadline {
+            color: var(--light-gray);
         }
 
         .hero-buttons {
@@ -328,8 +453,17 @@
             transition: var(--transition);
         }
 
+        .dark-mode .outline-button {
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
         .outline-button:hover {
             background-color: rgba(5, 150, 105, 0.05);
+        }
+
+        .dark-mode .outline-button:hover {
+            background-color: rgba(245, 158, 11, 0.1);
         }
 
         .blessing-note {
@@ -340,17 +474,34 @@
             font-weight: 500;
         }
 
+        .dark-mode .blessing-note {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--secondary);
+        }
+
         /* Section Alternating Backgrounds */
         .light-bg {
             background-color: var(--white);
+        }
+
+        .dark-mode .light-bg {
+            background-color: var(--dark);
         }
 
         .green-bg {
             background-color: rgba(5, 150, 105, 0.03);
         }
 
+        .dark-mode .green-bg {
+            background-color: rgba(5, 150, 105, 0.05);
+        }
+
         .gold-bg {
             background-color: rgba(245, 158, 11, 0.03);
+        }
+
+        .dark-mode .gold-bg {
+            background-color: rgba(245, 158, 11, 0.05);
         }
 
         /* Story Section */
@@ -371,6 +522,10 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
+        .dark-mode .story-image {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
         .story-image img {
             width: 100%;
             height: auto;
@@ -383,6 +538,11 @@
             padding: 24px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             margin-top: 24px;
+        }
+
+        .dark-mode .testimonial {
+            background: var(--dark);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
 
         .founder-info {
@@ -405,14 +565,25 @@
             font-weight: bold;
         }
 
+        .dark-mode .founder-avatar {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
         .founder-details h3 {
             font-size: 22px;
             margin-bottom: 4px;
         }
 
+        .dark-mode .founder-details h3 {
+            color: var(--light);
+        }
+
         .founder-details p {
             color: var(--gray);
-            font-size: 14px;
+        }
+
+        .dark-mode .founder-details p {
+            color: var(--light-gray);
         }
 
         .social-links {
@@ -434,10 +605,20 @@
             transition: var(--transition);
         }
 
+        .dark-mode .social-link {
+            background: var(--dark);
+            color: var(--secondary);
+        }
+
         .social-link:hover {
             background: var(--primary);
             color: white;
             transform: translateY(-3px);
+        }
+
+        .dark-mode .social-link:hover {
+            background: var(--secondary);
+            color: var(--dark);
         }
 
         /* Problem & Solution Sections */
@@ -456,9 +637,18 @@
             text-align: center;
         }
 
+        .dark-mode .card {
+            background: var(--dark);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
         }
 
         .card-icon {
@@ -477,14 +667,26 @@
             color: var(--accent);
         }
 
+        .dark-mode .problem .card-icon {
+            background-color: rgba(234, 88, 12, 0.2);
+        }
+
         .solution .card-icon {
             background-color: rgba(5, 150, 105, 0.1);
             color: var(--primary);
         }
 
+        .dark-mode .solution .card-icon {
+            background-color: rgba(5, 150, 105, 0.2);
+        }
+
         .features .card-icon {
             background-color: rgba(245, 158, 11, 0.1);
             color: var(--secondary);
+        }
+
+        .dark-mode .features .card-icon {
+            background-color: rgba(245, 158, 11, 0.2);
         }
 
         .card-title {
@@ -494,8 +696,16 @@
             color: var(--dark);
         }
 
+        .dark-mode .card-title {
+            color: var(--light);
+        }
+
         .card-text {
             color: var(--gray);
+        }
+
+        .dark-mode .card-text {
+            color: var(--light-gray);
         }
 
         /* Steps Section */
@@ -513,6 +723,11 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
+        .dark-mode .step {
+            background: var(--dark);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
         .step-number {
             width: 48px;
             height: 48px;
@@ -525,6 +740,10 @@
             font-weight: bold;
             font-size: 20px;
             margin: 0 auto 24px;
+        }
+
+        .dark-mode .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
         }
 
         /* Audience Section */
@@ -542,6 +761,11 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
+        .dark-mode .audience-card {
+            background: var(--dark);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
         .audience-icon {
             width: 64px;
             height: 64px;
@@ -553,6 +777,11 @@
             color: var(--primary);
             font-size: 32px;
             margin: 0 auto 24px;
+        }
+
+        .dark-mode .audience-icon {
+            background: rgba(5, 150, 105, 0.2);
+            color: var(--secondary);
         }
 
         /* Roadmap Section */
@@ -582,6 +811,10 @@
             background: var(--light-gray);
         }
 
+        .dark-mode .roadmap-item::before {
+            background: var(--light-gray);
+        }
+
         .roadmap-item:last-child::before {
             display: none;
         }
@@ -600,6 +833,10 @@
             flex-shrink: 0;
         }
 
+        .dark-mode .quarter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
         .quarter-year {
             font-size: 14px;
             opacity: 0.8;
@@ -611,6 +848,11 @@
             padding: 24px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             flex: 1;
+        }
+
+        .dark-mode .roadmap-content {
+            background: var(--dark);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
 
         .roadmap-features {
@@ -634,6 +876,10 @@
             font-weight: bold;
         }
 
+        .dark-mode .roadmap-feature::before {
+            color: var(--secondary);
+        }
+
         /* FAQ Section */
         .faq-container {
             max-width: 800px;
@@ -647,6 +893,10 @@
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         }
 
+        .dark-mode .faq-item {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        }
+
         .faq-question {
             padding: 20px 24px;
             background: white;
@@ -657,12 +907,20 @@
             align-items: center;
         }
 
+        .dark-mode .faq-question {
+            background: var(--dark);
+        }
+
         .faq-answer {
             padding: 0 24px;
             max-height: 0;
             overflow: hidden;
             background: var(--light);
             transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .dark-mode .faq-answer {
+            background: var(--dark);
         }
 
         .faq-answer.active {
@@ -678,6 +936,11 @@
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark-mode .waitlist-container {
+            background: var(--dark);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
         }
 
         .waitlist-form {
@@ -700,6 +963,10 @@
         .benefit-icon {
             color: var(--primary);
             margin-top: 4px;
+        }
+
+        .dark-mode .benefit-icon {
+            color: var(--secondary);
         }
 
         /* Footer */
@@ -745,9 +1012,17 @@
             transition: var(--transition);
         }
 
+        .dark-mode .footer-link {
+            color: #94a3b8;
+        }
+
         .footer-link:hover {
             color: white;
             padding-left: 4px;
+        }
+
+        .dark-mode .footer-link:hover {
+            color: var(--secondary);
         }
 
         .social-icons {
@@ -769,9 +1044,17 @@
             transition: var(--transition);
         }
 
+        .dark-mode .social-icon {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         .social-icon:hover {
             background: var(--primary);
             transform: translateY(-3px);
+        }
+
+        .dark-mode .social-icon:hover {
+            background: var(--secondary);
         }
 
         .copyright {
@@ -780,6 +1063,11 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #94a3b8;
             font-size: 14px;
+        }
+
+        .dark-mode .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
         }
 
         /* Animations */
@@ -964,10 +1252,7 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">
-                <!-- Your actual logo -->
-                <div class="logo-icon" style="background: none; width: 60px; height: 60px; padding: 10px;">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDEyYzAtNi42MzYtNS4zNjQtMTItMTJtMTJjMC02LjYzNi01LjM2NC0xMi0xMi0xMiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz48L3N2Zz4=" alt="Katari Logo" style="width: 100%; height: 100%; filter: invert(100%);"/>
-                </div>
+                <div class="logo-icon">K</div>
                 <div class="logo-text">KATARI</div>
             </a>
             <nav class="nav-links">
@@ -977,7 +1262,12 @@
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#audience" class="nav-link">Who It's For</a>
             </nav>
-            <button class="cta-button">Join Waitlist</button>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="cta-button" id="headerWaitlistBtn">Join Waitlist</button>
+            </div>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1004,7 +1294,7 @@
                     <h1 class="hero-headline">Success for African Traders</h1>
                     <p class="hero-subheadline">Trade crypto safely with anyone, anywhere. Built for Africa, powered by blockchain escrow, accessible through Mobile Money.</p>
                     <div class="hero-buttons">
-                        <button class="cta-button">Join Waitlist</button>
+                        <button class="cta-button" id="heroWaitlistBtn">Join Waitlist</button>
                         <button class="outline-button">Learn More ↓</button>
                     </div>
                     <div class="blessing-note">
@@ -1012,7 +1302,15 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://placehold.co/600x500/059669/FFFFFF?text=African+Trader+on+Phone" alt="African person using phone for crypto trading">
+                    <!-- No placeholder - using a clean illustration -->
+                    <svg width="100%" height="500" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="600" height="500" fill="#059669" opacity="0.1"/>
+                        <circle cx="300" cy="250" r="120" fill="#059669" opacity="0.2"/>
+                        <rect x="200" y="150" width="200" height="200" rx="20" fill="#059669" opacity="0.3"/>
+                        <circle cx="300" cy="250" r="80" fill="#F59E0B" opacity="0.3"/>
+                        <rect x="250" y="200" width="100" height="100" rx="10" fill="#EA580C" opacity="0.4"/>
+                        <text x="300" y="260" text-anchor="middle" fill="white" font-size="24" font-weight="bold">KATARI</text>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -1064,7 +1362,14 @@
                     </div>
                 </div>
                 <div class="story-image">
-                    <img src="https://placehold.co/500x600/EA580C/FFFFFF?text=Founder" alt="Mohammed Rashad, Founder & CEO">
+                    <!-- No placeholder - using a clean illustration -->
+                    <svg width="100%" height="600" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="600" fill="#EA580C" opacity="0.1"/>
+                        <circle cx="250" cy="300" r="100" fill="#EA580C" opacity="0.2"/>
+                        <rect x="150" y="200" width="200" height="200" rx="20" fill="#EA580C" opacity="0.3"/>
+                        <circle cx="250" cy="300" r="60" fill="#059669" opacity="0.4"/>
+                        <text x="250" y="310" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Founder</text>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -1449,9 +1754,7 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <a href="#" class="logo" style="margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
-                        <div class="logo-icon" style="background: none; width: 60px; height: 60px; padding: 10px;">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDEyYzAtNi42MzYtNS4zNjQtMTItMTJtMTJjMC02LjYzNi01LjM2NC0xMi0xMi0xMiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz48L3N2Zz4=" alt="Katari Logo" style="width: 100%; height: 100%; filter: invert(100%);"/>
-                        </div>
+                        <div class="logo-icon">K</div>
                         <div class="logo-text" style="color: white; font-size: 24px;">KATARI</div>
                     </a>
                     <p>Success for African Traders</p>
@@ -1527,7 +1830,6 @@
 
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
         const mobileMenu = document.querySelector('.mobile-menu');
         
         mobileMenuBtn.addEventListener('click', () => {
@@ -1539,6 +1841,22 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
             });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Update icon
+            const icon = darkModeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.className = 'fas fa-moon';
+            } else {
+                icon.className = 'fas fa-sun';
+            }
         });
 
         // Header scroll effect
@@ -1596,10 +1914,10 @@
 
         // Add logo spin animation
         document.querySelector('.logo').addEventListener('mouseenter', function() {
-            this.querySelector('.logo-icon img').style.transform = 'rotate(360deg)';
+            this.querySelector('.logo-icon').style.transform = 'rotate(360deg)';
         });
         document.querySelector('.logo').addEventListener('mouseleave', function() {
-            this.querySelector('.logo-icon img').style.transform = 'rotate(0deg)';
+            this.querySelector('.logo-icon').style.transform = 'rotate(0deg)';
         });
 
         // Add pulse animation to important elements
@@ -1823,6 +2141,25 @@
                 cursor.style.transform = 'translate(-10px, -10px) scale(1)';
             });
         }
+
+        // Make Join Waitlist buttons functional
+        const waitlistButtons = document.querySelectorAll('#heroWaitlistBtn, #headerWaitlistBtn');
+        waitlistButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('waitlist').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Focus on the Tally form
+                const tallyForm = document.querySelector('iframe[data-tally-src]');
+                if (tallyForm) {
+                    setTimeout(() => {
+                        tallyForm.focus();
+                    }, 1000);
+                }
+            });
+        });
     </script>
 </body>
 </html>
